@@ -1,4 +1,4 @@
-=== Autolink ===
+=== Autolink URI ===
 Contributors: Denis-de-Bernardy, Semiologic
 Donate link: http://buy.semiologic.com/drink
 Tags: autolink, link, auto-link
