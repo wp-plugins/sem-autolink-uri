@@ -4,8 +4,8 @@ Plugin Name: Autolink URI
 Plugin URI: http://www.semiologic.com/software/publishing/autolink-uri/
 Description: Automatically wrap unhyperlinked uri with html anchors.
 Author: Denis de Bernardy
-Version: 1.6
-Author URI: http://www.semiologic.com
+Version: 1.6.1
+Author URI: http://www.getsemiologic.com
 */
 
 /*
@@ -16,6 +16,10 @@ This software is copyright Mesoconcepts (http://www.mesoconcepts.com), and is di
 
 http://www.opensource.org/licenses/gpl-2.0.php
 **/
+
+		
+if ( @ini_get('pcre.backtrack_limit') < 250000 )
+	@ini_set('pcre.backtrack_limit', 250000);
 
 
 #
