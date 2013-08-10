@@ -3,7 +3,7 @@
 Plugin Name: Autolink URI
 Plugin URI: http://www.semiologic.com/software/autolink-uri/
 Description: Automatically wraps unhyperlinked uri with html anchors.
-Version: 2.1
+Version: 2.2
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: sem-autolink-uri
@@ -27,7 +27,16 @@ http://www.opensource.org/licenses/gpl-2.0.php
  **/
 
 class autolink_uri {
-	/**
+    /**
+     * autolink_uri()
+     */
+    function autolink_uri() {
+        // after shortcodes
+        add_filter('the_content', array($this, 'filter'), 12);
+        add_filter('the_excerpt', array($this, 'filter'), 12);
+    }
+
+    /**
 	 * filter()
 	 *
 	 * @param string $text
@@ -70,7 +79,7 @@ class autolink_uri {
 			)?
             )
             (?![\"']))
-			/ix", array('autolink_uri', 'url_callback'), $text);
+			/ix", array($this, 'url_callback'), $text);
 		
 		$text = preg_replace_callback("/
 			\b
@@ -82,7 +91,7 @@ class autolink_uri {
 				[a-z0-9%_|~-]+
 				(?:\.[a-z0-9%_|~-]+)+
 			)
-			/ix", array('autolink_uri', 'email_callback'), $text);
+			/ix", array($this, 'email_callback'), $text);
 		
 		$text = autolink_uri::unescape($text);
 		
@@ -153,10 +162,10 @@ class autolink_uri {
 				<\s*a\s.+?>.+?<\s*\/\s*a\s*>
 				/isx",
 			'tags' => "/
-				<[^<>]+?(?:src|href|codebase|archive|usemap|data|value|action|background)=[^<>]+?>
+				<[^<>]+?(?:src|href|codebase|archive|usemap|data|value|action|background|placeholder)=[^<>]+?>
 				/ix",
 			) as $regex ) {
-			$text = preg_replace_callback($regex, array('autolink_uri', 'escape_callback'), $text);
+			$text = preg_replace_callback($regex, array($this, 'escape_callback'), $text);
 		}
 		
 		return $text;
@@ -199,7 +208,6 @@ class autolink_uri {
 	} # unescape()
 } # autolink_uri
 
-// after shortcodes
-add_filter('the_content', array('autolink_uri', 'filter'), 12);
-add_filter('the_excerpt', array('autolink_uri', 'filter'), 12);
+
+$autolink_uri = new autolink_uri();
 ?>
