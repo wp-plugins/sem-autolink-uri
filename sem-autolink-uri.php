@@ -3,20 +3,19 @@
 Plugin Name: Autolink URI
 Plugin URI: http://www.semiologic.com/software/autolink-uri/
 Description: Automatically wraps unhyperlinked uri with html anchors.
-Version: 2.3
+Version: 2.3.1
 Author: Denis de Bernardy & Mike Koepke
-Author URI: http://www.semiologic.com
+Author URI: http://www.getsemiologic.com
 Text Domain: sem-autolink-uri
 Domain Path: /lang
+License: Dual licensed under the MIT and GPLv2 licenses
 */
 
 /*
 Terms of use
 ------------
 
-This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the GPL license, v2.
-
-http://www.opensource.org/licenses/gpl-2.0.php
+This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
 
 
