@@ -38,6 +38,10 @@ If you require more dedicated assistance, consider using [Semiologic Pro](http:/
 
 == Change Log ==
 
+= 2.4 =
+
+- Urls found in <code> and <pre> tags are now ignored.
+
 = 2.3.1 =
 
 - WP 3.8 compat
