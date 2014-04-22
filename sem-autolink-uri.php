@@ -3,7 +3,7 @@
 Plugin Name: Autolink URI
 Plugin URI: http://www.semiologic.com/software/autolink-uri/
 Description: Automatically wraps unhyperlinked uri with html anchors.
-Version: 2.4
+Version: 2.5
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: sem-autolink-uri
@@ -18,7 +18,6 @@ Terms of use
 This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
 
-add_action( 'plugins_loaded', array ( autolink_uri::get_instance(), 'plugin_setup' ) );
 
 /**
  * autolink_uri
@@ -63,31 +62,32 @@ class autolink_uri {
 	}
 
 	/**
-	 * Used for regular plugin work.
+	 * Constructor.
 	 *
-	 * @wp-hook plugins_loaded
-	 * @return  void
+	 *
 	 */
-	public function plugin_setup()
-	{
+
+	public function __construct() {
 		$this->plugin_url    = plugins_url( '/', __FILE__ );
 		$this->plugin_path   = plugin_dir_path( __FILE__ );
 
+		add_action( 'plugins_loaded', array ( $this, 'init' ) );
+    }
+
+
+	/**
+	 * init()
+	 *
+	 * @return void
+	 **/
+
+	function init() {
 		// more stuff: register actions and filters
         // after shortcodes
         add_filter('the_content', array($this, 'filter'), 12);
         add_filter('the_excerpt', array($this, 'filter'), 12);
 	    add_filter('widget_text', array($this, 'filter'), 12);
 	}
-
-	/**
-	 * Constructor. Intentionally left empty and public.
-	 *
-	 * @see plugin_setup()
-	 */
-
-	public function __construct() {
-    }
 
     /**
 	 * filter()
@@ -260,3 +260,5 @@ class autolink_uri {
 		return str_replace(array_keys($unescape), array_values($unescape), $text);
 	} # unescape()
 } # autolink_uri
+
+$autolink_uri = autolink_uri::get_instance();
