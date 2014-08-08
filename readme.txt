@@ -38,6 +38,10 @@ If you require more dedicated assistance, consider using [Semiologic Pro](http:/
 
 == Change Log ==
 
+= 2.6 =
+
+- Revamped the path, query string and anchor detection.  Some valid characters like $ + ( ) ! were being missed. (props Weston Technologies)
+
 = 2.5 =
 
 - Code refactoring
