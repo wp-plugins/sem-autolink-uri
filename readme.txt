@@ -13,8 +13,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-*This plugin's functionality has been merged into the [External Links plugin](https://wordpress.org/plugins/sem-external-links/).
-As a result this plugin is now deprecated.  No further development will occur on it.*
+> *This plugin's functionality has been merged into the [External Links plugin](https://wordpress.org/plugins/sem-external-links/).
+> As a result this plugin is now deprecated.  No further development will occur on it.*
 
 The Autolink URI plugin for WordPress automatically converts urls to hyperlinked urls in post/page content, excerpts and text widgets.
 
